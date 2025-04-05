@@ -1,0 +1,44 @@
+
+.input-container input[type="email"] {
+  padding: 10px 10px 10px 36px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  flex: 1;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+.input-container input::placeholder {
+  color: #999;
+}
+
+.input-container button {
+  padding: 10px 16px;
+  background-color: #634c9f;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.input-container button:hover {
+  background-color: #513a8d;
+}
+
+.email_submit {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+  text-align: left;
+  max-width: 360px;
+}
+
+samp {
+  color: #634c9f;
+  font-weight: 600;
+}
+
