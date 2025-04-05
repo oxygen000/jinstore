@@ -1,1 +1,186 @@
-<p>header works!</p>
+<header class="py-2 bg-[#fff] sticky top-0 z-50">
+    <nav>
+      <div class="container mx-auto flex justify-between items-center px-4 md:px-0">
+        <!-- القائمة العلوية -->
+        <ul class="flex flex-wrap items-center gap-4 text-gray-500 text-sm">
+          <li><a [routerLink]="'/about'" class="hover:text-orange-600">About Us</a></li>
+          <li><a [routerLink]="'/account'" class="hover:text-orange-600">My Account</a></li>
+          <li><a [routerLink]="'/wishlist'" class="hover:text-orange-600">Wishlist</a></li>
+          <li class="h-4 w-px bg-gray-300 mx-2"></li>
+          <li>
+            <p>
+              We deliver every day from
+              <span class="text-orange-600 font-semibold">7:00 to 23:00</span>
+            </p>
+          </li>
+        </ul>
+  
+        <!-- قائمة اختيار اللغة والعملة -->
+        <ul class="flex items-center gap-6 text-gray-500 text-sm">
+          <li>
+            <select class="border-none px-2 py-1" (change)="switchLanguage($event)">
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+            </select>
+          </li>
+          <li>
+            <select class="border-none px-2 py-1" (change)="switchCurrency($event)">
+              <option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</option>
+            </select>
+          </li>
+          <li>Order Tracking</li>
+        </ul>
+      </div>
+  
+      <hr class="border-b border-gray-200">
+  
+      <!-- القائمة الرئيسية -->
+      <div class="flex justify-between items-center container mx-auto px-4 py-2 mt-4">
+        <!-- الشعار وموقع التسليم -->
+        <div class="flex items-center">
+          <a [routerLink]="'/home'" class="relative">
+            <img src="/logos/bag-logo.svg" alt="Logo" class="h-8">
+          </a>
+          <a class="relative">
+            <div class="flex items-start ml-4">
+              <img src="/icon/locashin.svg" alt="Locashin" class="mb-1">
+              <div class="flex flex-col ml-2">
+                <samp class="text-[11px] text-gray-700">Deliver to</samp>
+                <div class="relative">
+                  <select class="text-sm text-gray-700 bg-transparent border-none focus:outline-none appearance-none pr-2">
+                    <option value="all">All</option>
+                    <option value="new-york">New York</option>
+                    <option value="los-angeles">Los Angeles</option>
+                    <option value="chicago">Chicago</option>
+                    <option value="miami">Miami</option>
+                    <option value="houston">Houston</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+  
+        <!-- شريط البحث -->
+        <div class="flex items-center p-3 justify-center flex-1 relative">
+          <input 
+            type="text" 
+            placeholder="Search for products, categories or brands..." 
+            class="border border-gray-300 px-4 py-2 w-full pr-10 text-sm bg-[#F3F4F6] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+          <button class="absolute right-5 top-1/2 transform -translate-y-1/2 bg-transparent">
+            <img src="/icon/search.svg" alt="Search" class="w-5 h-5 text-gray-500"/>
+          </button>
+        </div>
+  
+        <!-- الأيقونات (الحساب، العربة، طلبات أخرى) -->
+        <div class="flex items-center gap-6">
+          <a [routerLink]="'/profile'" class="relative flex items-center">
+            <img src="/icon/user.svg" alt="User" class="mb-1">
+            <div class="flex flex-col ml-2">
+              <samp class="text-sm text-gray-700">Sign In</samp>
+              <samp class="text-sm text-gray-700">Account</samp>
+            </div>
+          </a>
+          <a [routerLink]="'/hard'" class="relative">
+            <img src="/icon/hard.svg" alt="Hard">
+            <span class="absolute top-[-9px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
+          </a>
+          <a [routerLink]="'/cart'" class="relative">
+            <img src="/icon/cart.svg" alt="Cart" class="w-6 h-6">
+            <span class="absolute top-[-9px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
+          </a>
+        </div>
+      </div>
+  
+      <hr class="border-b border-gray-200">
+    </nav>
+
+    <nav>
+        <nav>
+            <header class="py-2 bg-white sticky top-0 z-50 shadow-lg">
+                <nav>
+                  <div class="container mx-auto flex justify-between items-center px-4 md:px-0">
+                    <!-- زر الهامبرغر الذي تم تحريكه إلى اليمين -->
+                    <button class="block md:hidden text-gray-500 ml-auto" (click)="toggleMenu()" [ngClass]="{'open': isMenuOpen}">
+                      <div class="hamburger">
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                      </div>
+                    </button>
+              
+                    <div class="flex items-center justify-between w-full">
+                      <!-- الشعار -->
+                      <a [routerLink]="'/home'" class="relative">
+                        <img src="/logos/bag-logo.svg" alt="Logo" class="h-8 md:hidden"/>
+                        <img src="/logos/logo.svg" alt="Logo" class="h-8 sm:block hidden "/>
+                      </a>
+              
+                      <!-- الأزرار الجانبية مثل الملف الشخصي، العربة، وهارد -->
+                      <div class="flex items-center gap-4 md:gap-6">
+                        <a [routerLink]="'/profile'" class="relative flex items-center">
+                          <img src="/icon/user.svg" alt="User" class="mb-1"/>
+                          <div class="flex flex-col ml-2">
+                            <samp class="text-sm text-gray-700">Sign In</samp>
+                            <samp class="text-sm text-gray-700">Account</samp>
+                          </div>
+                        </a>
+                        <a [routerLink]="'/hard'" class="relative hidden md:block">
+                          <img src="/icon/hard.svg" alt="Hard"/>
+                          <span class="absolute top-[-9px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
+                        </a>
+                        <a [routerLink]="'/cart'" class="relative hidden md:block">
+                          <img src="/icon/cart.svg" alt="Cart" class="w-6 h-6"/>
+                          <span class="absolute top-[-9px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- خط فاصل -->
+                  <hr class="border-b border-gray-200"/>
+              
+                  <!-- القائمة الجانبية في الجوال -->
+                  <div *ngIf="isMenuOpen" class="md:hidden bg-white">
+                    <ul class="flex flex-col text-gray-700 p-4">
+                      <li><a [routerLink]="'/about'" class="hover:text-orange-600 py-2 px-4">About Us</a></li>
+                      <li><a [routerLink]="'/account'" class="hover:text-orange-600 py-2 px-4">My Account</a></li>
+                      <li><a [routerLink]="'/wishlist'" class="hover:text-orange-600 py-2 px-4">Wishlist</a></li>
+                      <li><a [routerLink]="'/order-tracking'" class="hover:text-orange-600 py-2 px-4">Order Tracking</a></li>
+                      <li>
+                        <div class="py-2 px-4">
+                          <select class="border-none px-2 py-1 w-full" (change)="switchLanguage($event)">
+                            <option value="en">English</option>
+                            <option value="ar">العربية</option>
+                          </select>
+                        </div>
+                      </li>
+                      <li class="flex justify-between items-center py-2">
+                        <a [routerLink]="'/hard'" class="relative">
+                          <img src="/icon/hard.svg" alt="Hard"/>
+                          <span class="absolute top-[-9px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
+                        </a>
+                        <a [routerLink]="'/cart'" class="relative">
+                          <img src="/icon/cart.svg" alt="Cart" class="w-6 h-6"/>
+                          <span class="absolute top-[-9px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
+                        </a>
+                      </li>
+                      <div class="flex items-center p-3 justify-center flex-1 relative">
+                        <input 
+                          type="text" 
+                          placeholder="Search for products, categories or brands..." 
+                          class="border border-gray-300 px-4 py-2 w-full pr-10 text-sm bg-[#F3F4F6] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                        <button class="absolute right-5 top-1/2 transform -translate-y-1/2 bg-transparent">
+                          <img src="/icon/search.svg" alt="Search" class="w-5 h-5 text-gray-500"/>
+                        </button>
+                      </div>
+                    </ul>
+                  </div>
+                </nav>
+              </header>
+              
+        </nav>
+    </nav>
+  </header>
+  
