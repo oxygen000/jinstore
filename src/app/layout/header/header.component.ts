@@ -5,19 +5,22 @@ import { TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [RouterModule, FormsModule, TranslateModule, CommonModule],
+  imports: [RouterModule, FormsModule, TranslateModule, CommonModule,NgSelectModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   currentCurrency = 'USD';
   currencies = ['USD', 'EUR', 'EGP'];
   exchangeRates: any = {};
   isMenuOpen = false;
+  isOpen: boolean = false;
+  isDropdownOpen = false;
 
 
   constructor(
@@ -28,7 +31,6 @@ export class HeaderComponent {
     translate.setDefaultLang('en');
     translate.use(browserLang?.match(/en|ar/) ? browserLang : 'en');
 
-    this.loadExchangeRates();
   }
 
   switchLanguage(event: Event) {
@@ -41,22 +43,23 @@ export class HeaderComponent {
     const selectElement = event.target as HTMLSelectElement;
     const currency = selectElement.value;
     this.currentCurrency = currency;
-    this.loadExchangeRates();
     console.log('Currency switched to:', currency);
   }
 
-  loadExchangeRates() {
-    this.http.get(`https://api.exchangerate-api.com/v4/latest/USD`).subscribe((res: any) => {
-      this.exchangeRates = res.rates;
-      console.log('Exchange rates loaded:', this.exchangeRates);
-    });
-  }
-
-  convertPrice(price: number): number {
-    const rate = this.exchangeRates[this.currentCurrency] || 1;
-    return price * rate;
-  }
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  cities = [
+    { label: 'All', value: 'all' },
+    { label: 'New York', value: 'new-york' },
+    { label: 'Los Angeles', value: 'los-angeles' },
+    { label: 'Chicago', value: 'chicago' },
+    { label: 'Miami', value: 'miami' },
+    { label: 'Houston', value: 'houston' },
+  ];
+  selectedCity = null;
 }
