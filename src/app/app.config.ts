@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,5 +15,6 @@ export const appConfig: ApplicationConfig = {
      provideClientHydration(withEventReplay()),
      provideHttpClient(),
      provideTranslateService(),
+     provideAnimations(),
     ]
 };

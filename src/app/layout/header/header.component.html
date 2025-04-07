@@ -3,9 +3,9 @@
     <nav>
       <div class="container mx-auto flex justify-between mb-3 items-center px-4 md:px-0">
         <ul class="flex flex-wrap items-center gap-4 text-gray-500 text-sm">
-          <li><a [routerLink]="'/about'" class="hover:text-orange-600 transition-colors">About Us</a></li>
-          <li><a [routerLink]="'/account'" class="hover:text-orange-600 transition-colors">My Account</a></li>
-          <li><a [routerLink]="'/wishlist'" class="hover:text-orange-600 transition-colors">Wishlist</a></li>
+          <li><a [routerLink]="'/about'" class="hover:text-[#634C9F] transition-colors">About Us</a></li>
+          <li><a [routerLink]="'/account'" class="hover:text-[#634C9F] transition-colors">My Account</a></li>
+          <li><a [routerLink]="'/wishlist'" class="hover:text-[#634C9F] transition-colors">Wishlist</a></li>
           <li class="h-4 w-px bg-gray-300 mx-2"></li>
           <li>
             <p>
@@ -15,27 +15,25 @@
           </li>
         </ul>
   
-        <ul class="flex items-center gap-6 text-gray-500 text-sm">
+        <ul class="flex items-center gap-6 text-gray-500 ">
           <li>
-            <select class="border-none px-3 py-1  text-sm transition-all"
-                    (change)="switchLanguage($event)">
+            <select class="border-none  px-3 py-1   transition-all"
+              (change)="switchLanguage($event)">
               <option value="en">English</option>
               <option value="ar">العربية</option>
             </select>
           </li>
           <li>
-            <select class="border-none px-3 py-1  text-sm  transition-all"
-                    (change)="switchCurrency($event)">
+            <select class="border-none px-3 py-1   transition-all"
+              (change)="switchCurrency($event)">
               <option value="USD">USD</option>
               <option value="EGP">EGP</option>
             </select>
           </li>
-          <li><a [routerLink]="'/tracking'" class="hover:text-orange-600">Order Tracking</a></li>
+          <li><a [routerLink]="'/tracking'" class="hover:text-[#634C9F]">Order Tracking</a></li>
         </ul>
       </div>
-  
       <hr class="border-b border-gray-200 mb-2">
-  
       <div class="flex justify-between items-center container mx-auto px-4 py-3">
         <div class="flex items-center">
           <a [routerLink]="'/home'" class="relative">
@@ -46,16 +44,29 @@
               <img src="/icon/locashin.svg" alt="Location Icon" class="mb-1" />
               <div class="flex flex-col ml-2">
                 <samp class="text-xs text-gray-600">Deliver to</samp>
-                <ng-select
-  [items]="cities"
-  bindLabel="label"
-  bindValue="value"
-  placeholder="All"
-  [(ngModel)]="selectedCity"
-  [clearable]="false"
-  [searchable]="false"
-  class="custom-ng-select w-[120px] h-[35px] text-gray-700">
-</ng-select>
+                <div class="relative inline-block text-left w-[120px]">
+                  <button
+                    (click)="toggleDropdown()"
+                    class="w-full bg-white pl-3 pr-10 py-2 text-sm text-gray-700 flex items-center justify-between hover:border-[#634C9F] focus:outline-none"
+                  >
+                    {{ getSelectedLabel() }}
+                   
+                  </button>
+                
+                  <ul
+                    *ngIf="isDropdownOpen"
+                    class="absolute z-10 mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-auto animate-slideRight"
+                  >
+                    <li
+                      *ngFor="let city of cities"
+                      (click)="selectCity(city)"
+                      class="px-4 py-2 text-sm text-gray-700 hover:bg-[#F3F4F6] cursor-pointer"
+                    >
+                      {{ city.label }}
+                    </li>
+                  </ul>
+                </div>
+                
 
               
               
@@ -84,111 +95,102 @@
           </a>
           <a [routerLink]="'/wishlist'" class="relative">
             <img src="/icon/hard.svg" alt="Wishlist" class="w-6 h-6">
-            <span class="absolute top-[-9px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
+            <span class="absolute top-[-7px] right-[-3px] bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
           </a>
           <a [routerLink]="'/cart'" class="relative">
             <img src="/icon/cart.svg" alt="Cart" class="w-6 h-6">
-            <span class="absolute top-[-9px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
+            <span class="absolute top-[-7px] right-[-3px] right-0 bg-orange-600 text-white rounded-full px-1 text-xs">3</span>
           </a>
         </div>
       </div>
-  
       <hr class="border-b border-gray-200">
       <div class="flex justify-between items-center container mx-auto px-6 py-4">
-        <div class="w-3/4 flex space-x-6">
-          <div class="relative">
-            <button (click)="toggleDropdown()" class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline p-3 rounded-md transition-all">
-              Home
-              <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <ul *ngIf="isDropdownOpen" class="absolute left-0 mt-2 w-56 bg-white border rounded-md shadow-lg z-10">
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <img src="/icon/all.svg" alt="all" class="mr-2 w-6 h-6">
-                <a [routerLink]="'/categories'">All Categories</a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/fruits-vegetables'" class="flex items-center">
-                  <img src="/icon/apple.svg" alt="apple" class="mr-2 w-6 h-6">
-                  Fruits & Vegetables
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/meats-seafood'" class="flex items-center">
-                  <img src="/icon/meat.svg" alt="meat" class="mr-2 w-6 h-6">
-                  Meats & Seafood
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/breakfast-dairy'" class="flex items-center">
-                  <img src="/icon/egg.svg" alt="egg" class="mr-2 w-6 h-6">
-                  Breakfast & Dairy
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/breads-bakery'" class="flex items-center">
-                  <img src="/icon/toast.svg" alt="toast" class="mr-2 w-6 h-6">
-                  Breads & Bakery
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/beverages'" class="flex items-center">
-                  <img src="/icon/cup.svg" alt="cup" class="mr-2 w-6 h-6">
-                  Beverages
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/frozen-foods'" class="flex items-center">
-                  <img src="/icon/snowflake.svg" alt="snowflake" class="mr-2 w-6 h-6">
-                  Frozen Foods
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/biscuits-snacks'" class="flex items-center">
-                  <img src="/icon/bar.svg" alt="bar" class="mr-2 w-6 h-6">
-                  Biscuits & Snacks
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/grocery-staples'" class="flex items-center">
-                  <img src="/icon/wheat.svg" alt="wheat" class="mr-2 w-6 h-6">
-                  Grocery & Staples
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/household-needs'" class="flex items-center">
-                  <img src="/icon/scoop.svg" alt="scoop" class="mr-2 w-6 h-6">
-                  Household Needs
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/healthcare'" class="flex items-center">
-                  <img src="/icon/toiletpaper.svg" alt="toilet paper" class="mr-2 w-6 h-6">
-                  Healthcare
-                </a>
-              </li>
-              <li class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] hover:underline hover:bg-gray-100 p-3 rounded-md transition-all">
-                <a [routerLink]="'/baby-pregnancy'" class="flex items-center">
-                  <img src="/icon/baby.svg" alt="baby" class="mr-2 w-6 h-6">
-                  Baby & Pregnancy
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-      
-      
-      
-      
-    </nav>
-  </header>
-  
+  <div class="flex space-x-6">
+    <div class="relative">
+      <button (click)="toggleHome()" class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+        Home
+        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <ul *ngIf="isHomeOpen" class="absolute top-10 w-[300px] h-[555px] bg-white shadow-lg rounded-[9px] z-10 border border-[#E5E7EB] overflow-hidden animate-slideRight">
+        <ng-container *ngFor="let item of homeMenu">
+          <li class="flex items-center text-sm font-medium text-[#030712] hover:text-[#634C9F] p-3 h-[46px] border-t border-[#E5E7EB] transition-all duration-300 ease-in-out">
+            <a [routerLink]="item.link" class="flex items-center w-full">
+              <img [src]="item.icon" [alt]="item.alt" class="mr-2 w-6 h-6">
+              {{ item.label }}
+              <ng-container *ngIf="item.hasArrow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-auto w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </ng-container>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
 
+    <div class="relative">
+      <button (click)="toggleShop()" class="flex items-center text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+        Shop
+        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <ul *ngIf="isShopOpen" class="absolute top-10 w-[300px] bg-white rounded-[9px] shadow-lg z-10 border border-[#E5E7EB] overflow-hidden animate-slideRight">
+        <ng-container *ngFor="let item of shopMenu">
+          <li class="flex items-center text-sm font-medium text-[#030712] hover:text-[#634C9F] p-3 h-[46px] border-t border-[#E5E7EB] transition-all duration-300 ease-in-out">
+            <a [routerLink]="item.link" class="flex items-center w-full">
+              <img [src]="item.icon" [alt]="item.alt" class="mr-2 w-6 h-6">
+              {{ item.label }}
+              <ng-container *ngIf="item.hasArrow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-auto w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </ng-container>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <a routerLink="/fruits-vegetables" class="text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+      Fruits & Vegetables
+    </a>
+
+    <a routerLink="/beverages" class="text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+      Beverages
+    </a>
+
+    <a routerLink="/blog" class="text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+      Blog
+    </a>
+
+    <a routerLink="/contact" class="text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+      Contact
+    </a>
+  </div>
+
+  <div class="flex space-x-4">
+    <a routerLink="/trending-products" class="text-[#030712] flex items-center font-semibold hover:text-[#634C9F] p-3 transition-all">
+      Trending Products
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </a>
+    <a routerLink="/almost-finished" class="text-[#DC2626] flex items-center font-semibold  p-3 transition-all">
+      Almost Finished
+      <span class="bg-gradient-to-r from-[#DC2626] to-[#EA580C] text-white px-2 py-0.5 rounded ml-2 text-xs font-bold">
+        SALE
+      </span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+    </svg>
+    </a>
+  </div>
+      </div>
+      <hr class="border-b border-gray-200">
+      </nav>
+      </header>
   <!-- Mobile Header -->
   <header class="sticky top-0 z-50 bg-white py-2 md:hidden ">
     <nav class="container mx-auto px-4">
@@ -222,14 +224,18 @@
           </a>
         </div>
       </div>
-  
-      <div *ngIf="isMenuOpen" class="mt-4 bg-white space-y-3">
+      <hr class="border-b border-gray-200 mt-3">
+
+      <div 
+       *ngIf="isMenuOpen" class="mt-4 bg-white space-y-3">
         <ul class="flex flex-col text-gray-700 space-y-2">
           <li><a [routerLink]="'/about'" class="block py-2 px-2 hover:text-orange-600">About Us</a></li>
           <li><a [routerLink]="'/account'" class="block py-2 px-2 hover:text-orange-600">My Account</a></li>
           <li><a [routerLink]="'/wishlist'" class="block py-2 px-2 hover:text-orange-600">Wishlist</a></li>
           <li><a [routerLink]="'/order-tracking'" class="block py-2 px-2 hover:text-orange-600">Order Tracking</a></li>
-          <li class="px-2">
+          <hr class="border-b border-gray-200 mt-2">
+
+          <li class="px-2 mt-2">
             <select class="w-full border border-gray-300 text-sm px-3 py-2 rounded" (change)="switchLanguage($event)">
               <option value="en">English</option>
               <option value="ar">العربية</option>
@@ -252,8 +258,113 @@
           />
           <button class="absolute right-5 top-1/2 -translate-y-1/2">
             <img src="/icon/search.svg" alt="Search" class="w-5 h-5" />
-          </button>
+          </button>          
         </div>
+        <hr class="border-b border-gray-200 mt-2">
+
+        <div class="p-4 max-w-xl mx-auto space-y-2 ">
+          <div class=" overflow-hidden ">
+            <button
+              class="flex items-center justify-between w-full p-4 font-medium  hover:bg-gray-100 dark:hover:bg-gray-800"
+              (click)="toggle(0)"
+            >
+              <span class="flex items-center gap-2 ">
+                Home
+              </span>
+              <svg
+                class="w-4 h-4 transition-transform"
+                [ngClass]="{ 'rotate-180': activeIndex === 0 }"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path d="M9 5L5 1L1 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div [@accordionAnimation]
+            *ngIf="activeIndex === 0" class="bg-white  border-t border-gray-200 ">
+              <ul class="divide-y divide-gray-100 ">
+                <li *ngFor="let item of homeMenu" class="flex items-center justify-between px-4 py-3">
+                  <a [routerLink]="item.link" class="flex items-center gap-2">
+                    <img [src]="item.icon" [alt]="item.alt" class="w-5 h-5" />
+                    <span class="text-sm ">{{ item.label }}</span>
+                  </a>
+                  <svg *ngIf="item.hasArrow" class="w-3 h-3 " fill="none" viewBox="0 0 10 6">
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                </li>
+              </ul>
+            </div>
+          </div>
+        
+          <div class=" overflow-hidden">
+            <button
+              class="flex items-center justify-between w-full p-4 font-medium "
+              (click)="toggle(1)"
+            >
+              <span class="flex items-center gap-2">
+                Shop
+              </span>
+              <svg
+                class="w-4 h-4 transition-transform"
+                [ngClass]="{ 'rotate-180': activeIndex === 1 }"
+                viewBox="0 0 10 6"
+                fill="none"
+              >
+                <path d="M9 5L5 1L1 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div [@accordionAnimation]
+            *ngIf="activeIndex === 1" class="bg-white  border-t border-gray-200 ">
+              <ul class="divide-y divide-gray-100 dark:divide-gray-700">
+                <li *ngFor="let item of shopMenu" class="flex items-center justify-between px-4 py-3">
+                  <a [routerLink]="item.link" class="flex items-center gap-2">
+                    <img [src]="item.icon" [alt]="item.alt" class="w-5 h-5" />
+                    <span class="text-sm ">{{ item.label }}</span>
+                  </a>
+                  <svg *ngIf="item.hasArrow" class="w-3 h-3 " fill="none" viewBox="0 0 10 6">
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a routerLink="/fruits-vegetables" class="text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+            Fruits & Vegetables
+          </a>
+      
+          <a routerLink="/beverages" class="text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+            Beverages
+          </a>
+      
+          <a routerLink="/blog" class="text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+            Blog
+          </a>
+      
+          <a routerLink="/contact" class="text-[#030712] font-semibold hover:text-[#634C9F] p-3 transition-all">
+            Contact
+          </a>
+        </div>
+        <div class="flex space-x-4">
+          <a routerLink="/trending-products" class="text-[#030712] flex items-center font-semibold hover:text-[#634C9F] p-3 transition-all">
+            Trending Products
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+          <a routerLink="/almost-finished" class="text-[#DC2626] flex items-center font-semibold  p-3 transition-all">
+            Almost Finished
+            <span class="bg-gradient-to-r from-[#DC2626] to-[#EA580C] text-white px-2 py-0.5 rounded ml-2 text-xs font-bold">
+              SALE
+            </span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+          </svg>
+          </a>
+        </div>
+
+        
+
+        
       </div>
     </nav>
   </header>
