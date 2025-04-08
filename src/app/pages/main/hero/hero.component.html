@@ -1,31 +1,28 @@
 <div class="hero-container">
-    <div *ngFor="let slide of slides; let i = index"
-         [class.active]="i === currentSlideIndex"
-         class="hero-slide"
-         [ngStyle]="{'background-image': 'url(' + slide.image + ')'}">
-  
-      <div class="slide-content">
-        <h2  class="hero-title">{{ slide.title }}</h2>
-        <h4 class="hero-subtitle">{{ slide.subtitle }}</h4>
-        <p>{{ slide.description }}</p>
-        
-  
-        <div class="price">
-          <span class="new-price">{{ slide.price }}</span>
-          <span class="old-price">{{ slide.oldPrice }}</span>
+    <div *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlideIndex" class="hero-slide"
+        [ngStyle]="{'background-image': 'url(' + slide.image + ')'}">
+
+        <div class="slide-content">
+            <h2 class="hero-title">{{ slide.title }}</h2>
+            <h4 class="hero-subtitle">{{ slide.subtitle }}</h4>
+            <p>{{ slide.description }}</p>
+
+
+            <div class="price  ">
+                <button class="shop-btn">Shop Now</button>
+                <span class="new-price">{{ slide.price }}</span>
+                <span class="old-price">{{ slide.oldPrice }}</span>
+
+            </div>
+
         </div>
-  
-        <button class="shop-btn">Shop Now</button>
-      </div>
     </div>
-  
-    <button class="prev-btn" (click)="prevSlide()">&#10094;</button>
+
+    <button class="prev-btn " (click)="prevSlide()">&#10094;</button>
     <button class="next-btn" (click)="nextSlide()">&#10095;</button>
-  
+
     <div class="tablist">
-      <span *ngFor="let slide of slides; let i = index"
-            [class.active]="i === currentSlideIndex"
+        <span *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlideIndex"
             class="tab-dot"></span>
     </div>
-  </div>
-  
+</div>

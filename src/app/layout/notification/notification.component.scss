@@ -1,98 +1,95 @@
 main {
-    color: #FFFFFF;
-    background: #634C9F;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    height: auto;
-    min-height: 48px;
-    width: 100%;
-    box-sizing: border-box;
-    flex-wrap: wrap; 
-    gap: 10px;
-  }
-  
-  .notification {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 15px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: -0.32px;
-    color: #FFFFFF;
-    flex: 1 1 auto;
-    min-width: 150px;
-  }
-  
-  .text-time {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 1.4;
-    letter-spacing: -0.32px;
-    color: #FFFFFF;
-    opacity: 0.9;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .countdown {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-  }
-  
-  .time {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    
-  }
-  
-  .time-text {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 1.4;
-    letter-spacing: -0.32px;
-    color: #FFFFFF;
-    opacity: 0.9;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  color: #ffffff;
+  background: #634c9f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: auto;
+  min-height: 48px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.notification {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.32px;
+  color: #ffffff;
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+.text-time {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  color: #ffffff;
+  opacity: 0.9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.time {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.time-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  color: #ffffff;
+  opacity: 0.9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px;
   }
 
-  
-  @media (max-width: 768px) {
-    main {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 12px;
-    }
-  
-    .countdown {
-      justify-content: flex-start;
-      gap: 10px;
-    }
-  
-    .notification,
-    .text-time {
-      font-size: 12px;
-    }
-  
-    .time {
-      font-size: 14px;
-    }
+  .countdown {
+    justify-content: flex-start;
+    gap: 10px;
   }
-  
+
+  .notification,
+  .text-time {
+    font-size: 12px;
+  }
+
+  .time {
+    font-size: 14px;
+  }
+}

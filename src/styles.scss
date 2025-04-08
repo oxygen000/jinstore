@@ -1,21 +1,18 @@
 @use "tailwindcss" as *;
 
-
 @layer utilities {
-    @keyframes slideRight {
-      0% {
-        transform: translateY(-30px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateX(0);
-        opacity: 1;
-      }
+  @keyframes slideRight {
+    0% {
+      transform: translateY(-30px);
+      opacity: 0;
     }
-  
-    .animate-slideRight {
-      animation: slideRight 0.4s ease forwards;
+    100% {
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 
-  
+  .animate-slideRight {
+    animation: slideRight 0.4s ease forwards;
+  }
+}

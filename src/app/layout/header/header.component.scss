@@ -1,86 +1,82 @@
 /* Container for dropdown */
 .dropdown {
-    position: relative;
-    display: inline-block;
-  
-    /* Dropdown Toggle Button */
-    .dropdown-toggle {
-      display: flex;
-      align-items: center;
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-  
-      &:hover {
-        background-color: #f3f4f6; /* Light gray hover effect */
-      }
-    }
-  
-    /* Dropdown Menu */
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-  
-      /* Show dropdown when hovering the parent */
-      .dropdown:hover & {
-        display: block;
-      }
-  
-      /* Menu items styling */
-      li {
-        padding: 0.75rem 1.25rem;
-        cursor: pointer;
-  
-        &:hover {
-          background-color: #f3f4f6;
-        }
-  
-        a {
-          display: block;
-          color: #333;
-          text-decoration: none;
-          font-weight: 600;
-  
-          &:hover {
-            color: #0073e6;
-          }
-        }
-      }
-    }
-  }
-  
-  /* General Styling for Select Elements */
-  select {
-    padding: 0.75rem 1.25rem;
-    width: 100%;
-    border-radius: 4px;
-    background-color: white;
+  position: relative;
+  display: inline-block;
+
+  /* Dropdown Toggle Button */
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: border-color 0.3s;
-  
-    &:focus {
-      outline: none;
-      border-color: #0073e6;
-      box-shadow: 0 0 0 2px rgba(0, 115, 230, 0.2);
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #f3f4f6; /* Light gray hover effect */
     }
   }
-  
-  /* Label styling */
-  label {
-    color: #333;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+
+    /* Show dropdown when hovering the parent */
+    .dropdown:hover & {
+      display: block;
+    }
+
+    /* Menu items styling */
+    li {
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f3f4f6;
+      }
+
+      a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+          color: #0073e6;
+        }
+      }
+    }
   }
-  
+}
 
+/* General Styling for Select Elements */
+select {
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s;
 
-  
+  &:focus {
+    outline: none;
+    border-color: #0073e6;
+    box-shadow: 0 0 0 2px rgba(0, 115, 230, 0.2);
+  }
+}
+
+/* Label styling */
+label {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}

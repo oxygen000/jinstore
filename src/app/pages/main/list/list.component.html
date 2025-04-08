@@ -1,0 +1,21 @@
+<div class="list-container hidden md:flex">
+    <!-- نسخة الشاشات الكبيرة -->
+    <ul class="custom-list desktop-list ">
+        <li *ngFor="let item of list" class="list-item">
+          <img [src]="item.image" alt="{{item.title}}" />
+          <p>{{item.title}}</p>
+        </li>
+      </ul>
+  </div>
+  
+  <div class="list-container  md:hidden">
+    <!-- نسخة الشاشات الصغيرة (أقل من md) -->
+    <ul class="custom-list mobile-list ">
+        <li *ngFor="let item of list" class="list-item">
+          <img [src]="item.image" alt="{{item.title}}" />
+          <p>{{item.title}}</p>
+        </li>
+      </ul>
+
+  </div>
+  

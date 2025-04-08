@@ -6,13 +6,23 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-
-
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule, FormsModule, TranslateModule, CommonModule,NgSelectModule],
+  imports: [
+    RouterModule,
+    FormsModule,
+    TranslateModule,
+    CommonModule,
+    NgSelectModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   animations: [
@@ -21,13 +31,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       state('*', style({ height: '*', opacity: 1, overflow: 'hidden' })),
       transition(':enter', [
         style({ height: '0', opacity: 0 }),
-        animate('300ms ease-out')
+        animate('300ms ease-out'),
       ]),
       transition(':leave', [
-        animate('300ms ease-in', style({ height: '0', opacity: 0 }))
-      ])
-    ])
-  ]
+        animate('300ms ease-in', style({ height: '0', opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class HeaderComponent {
   currentCurrency = 'USD';
@@ -40,17 +50,10 @@ export class HeaderComponent {
   isDropdownOpen = false;
   activeIndex: number | null = null;
 
-
-
-
-  constructor(
-    private translate: TranslateService,
-    private http: HttpClient
-  ) {
+  constructor(private translate: TranslateService, private http: HttpClient) {
     const browserLang = translate.getBrowserLang();
     translate.setDefaultLang('en');
     translate.use(browserLang?.match(/en|ar/) ? browserLang : 'en');
-
   }
 
   switchLanguage(event: Event) {
@@ -102,29 +105,104 @@ export class HeaderComponent {
     return this.selectedCity?.label || 'Select';
   }
 
-
   homeMenu = [
-    { label: 'All Categories', link: '/categories', icon: '/icon/all.svg', alt: 'all', hasArrow: true },
-    { label: 'Fruits & Vegetables', link: '/fruits-vegetables', icon: '/icon/apple.svg', alt: 'apple', hasArrow: true },
-    { label: 'Meats & Seafood', link: '/meats-seafood', icon: '/icon/meat.svg', alt: 'meat', hasArrow: true },
-    { label: 'Breakfast & Dairy', link: '/breakfast-dairy', icon: '/icon/egg.svg', alt: 'egg', hasArrow: true },
-    { label: 'Breads & Bakery', link: '/breads-bakery', icon: '/icon/toast.svg', alt: 'toast', hasArrow: true },
-    { label: 'Beverages', link: '/beverages', icon: '/icon/cup.svg', alt: 'cup', hasArrow: true },
-    { label: 'Frozen Foods', link: '/frozen-foods', icon: '/icon/snowflake.svg', alt: 'snowflake', hasArrow: false },
-    { label: 'Biscuits & Snacks', link: '/biscuits-snacks', icon: '/icon/bar.svg', alt: 'bar', hasArrow: false },
-    { label: 'Grocery & Staples', link: '/grocery-staples', icon: '/icon/wheat.svg', alt: 'wheat', hasArrow: false },
-    { label: 'Household Needs', link: '/household-needs', icon: '/icon/scoop.svg', alt: 'scoop', hasArrow: false },
-    { label: 'Healthcare', link: '/healthcare', icon: '/icon/toiletpaper.svg', alt: 'toilet paper', hasArrow: false },
-    { label: 'Baby & Pregnancy', link: '/baby-pregnancy', icon: '/icon/baby.svg', alt: 'baby', hasArrow: false }
+    {
+      label: 'All Categories',
+      link: '/categories',
+      icon: '/icon/all.svg',
+      alt: 'all',
+      hasArrow: true,
+    },
+    {
+      label: 'Fruits & Vegetables',
+      link: '/fruits-vegetables',
+      icon: '/icon/apple.svg',
+      alt: 'apple',
+      hasArrow: true,
+    },
+    {
+      label: 'Meats & Seafood',
+      link: '/meats-seafood',
+      icon: '/icon/meat.svg',
+      alt: 'meat',
+      hasArrow: true,
+    },
+    {
+      label: 'Breakfast & Dairy',
+      link: '/breakfast-dairy',
+      icon: '/icon/egg.svg',
+      alt: 'egg',
+      hasArrow: true,
+    },
+    {
+      label: 'Breads & Bakery',
+      link: '/breads-bakery',
+      icon: '/icon/toast.svg',
+      alt: 'toast',
+      hasArrow: true,
+    },
+    {
+      label: 'Beverages',
+      link: '/beverages',
+      icon: '/icon/cup.svg',
+      alt: 'cup',
+      hasArrow: true,
+    },
+    {
+      label: 'Frozen Foods',
+      link: '/frozen-foods',
+      icon: '/icon/snowflake.svg',
+      alt: 'snowflake',
+      hasArrow: false,
+    },
+    {
+      label: 'Biscuits & Snacks',
+      link: '/biscuits-snacks',
+      icon: '/icon/bar.svg',
+      alt: 'bar',
+      hasArrow: false,
+    },
+    {
+      label: 'Grocery & Staples',
+      link: '/grocery-staples',
+      icon: '/icon/wheat.svg',
+      alt: 'wheat',
+      hasArrow: false,
+    },
+    {
+      label: 'Household Needs',
+      link: '/household-needs',
+      icon: '/icon/scoop.svg',
+      alt: 'scoop',
+      hasArrow: false,
+    },
+    {
+      label: 'Healthcare',
+      link: '/healthcare',
+      icon: '/icon/toiletpaper.svg',
+      alt: 'toilet paper',
+      hasArrow: false,
+    },
+    {
+      label: 'Baby & Pregnancy',
+      link: '/baby-pregnancy',
+      icon: '/icon/baby.svg',
+      alt: 'baby',
+      hasArrow: false,
+    },
   ];
-  
+
   shopMenu = [
-    { label: 'All Categories', link: '/categories', icon: '/icon/all.svg', alt: 'all', hasArrow: true },
+    {
+      label: 'All Categories',
+      link: '/categories',
+      icon: '/icon/all.svg',
+      alt: 'all',
+      hasArrow: true,
+    },
   ];
-  
+
   toggle(index: number): void {
     this.activeIndex = this.activeIndex === index ? null : index;
   }
- 
 }
-
