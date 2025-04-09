@@ -1,1 +1,55 @@
-<p>editorspack works!</p>
+<div class="flex justify-between items-center px-4 sm:px-10 mt-10 sm:mt-14 h-[34px]">
+    <h2 class="text-lg sm:text-xl font-bold text-gray-800">Editor’s Pick</h2>
+    <button class="text-blue-600 text-sm sm:text-base font-semibold hover:underline">View All</button>
+  </div>
+<!-- ✅ شبكة المنتجات الأصلية -->
+<div class="grid grid-flow-col grid-rows-3 gap-4 mt-6 px-10">
+
+    <ng-container *ngFor="let product of products; let i = index">
+      <div
+        [class.row-span-3]="product.layout === 'single'"
+        [class.col-span-2]="product.layout === 'double'"
+        [ngClass]="{
+          'h-3/4': i === 0 || i === 3,   
+          'h-full': !(i === 0 || i === 3)   
+        }"
+        class="bg-white p-3 rounded-2xl shadow-md relative flex flex-col">
+  
+        <!-- أيقونة الإعجاب -->
+        <div class="absolute top-2 right-2 text-red-500 cursor-pointer">
+          <img src="./icon/hard.svg" alt="heart" class="w-5 h-5" />
+        </div>
+  
+        <!-- الخصم -->
+        <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-0.5 rounded-md text-xs font-bold">
+          {{ product.discount }}%
+        </div>
+  
+        <!-- صورة المنتج -->
+        <img [src]="product.image" [alt]="product.name"
+          class="w-full h-32 object-cover rounded-lg mb-3 shadow-sm" />
+  
+        <!-- اسم المنتج -->
+        <h3 class="text-center font-semibold text-sm text-gray-800 truncate">{{ product.name }}</h3>
+  
+        <!-- الأسعار -->
+        <div class="flex justify-center gap-2 items-center mt-2">
+          <span class="text-xs text-gray-400 line-through">{{ product.oldPrice }} ج.م</span>
+          <span class="text-base font-bold text-green-600">{{ product.newPrice }} ج.م</span>
+        </div>
+  
+        <!-- الكمية وزر السلة -->
+        <div class="flex justify-between items-center mt-4">
+          <div class="flex items-center gap-2">
+            <button class="bg-gray-200 text-sm px-2 py-1 rounded-full" (click)="decreaseQty(product)">-</button>
+            <span class="text-sm font-medium">{{ product.qty }}</span>
+            <button class="bg-gray-200 text-sm px-2 py-1 rounded-full" (click)="increaseQty(product)">+</button>
+          </div>
+          <button class="bg-blue-500 text-white text-sm px-3 py-1 rounded-full">أضف</button>
+        </div>
+  
+      </div>
+    </ng-container>
+  
+  </div>
+  
