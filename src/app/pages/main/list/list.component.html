@@ -1,21 +1,7 @@
-<div class="list-container hidden md:flex">
-    <!-- نسخة الشاشات الكبيرة -->
-    <ul class="custom-list desktop-list ">
-        <li *ngFor="let item of list" class="list-item">
-          <img [src]="item.image" alt="{{item.title}}" />
-          <p>{{item.title}}</p>
-        </li>
-      </ul>
+<main class="flex flex-nowrap">
+  <div *ngFor="let item of list">
+    <div>
+      <img src="{{item.image}}" alt="{{item.title}}">
+    </div>
   </div>
-  
-  <div class="list-container  md:hidden">
-    <!-- نسخة الشاشات الصغيرة (أقل من md) -->
-    <ul class="custom-list mobile-list ">
-        <li *ngFor="let item of list" class="list-item">
-          <img [src]="item.image" alt="{{item.title}}" />
-          <p>{{item.title}}</p>
-        </li>
-      </ul>
-
-  </div>
-  
+</main>
