@@ -4,12 +4,12 @@ import { ProductService } from '../../../../servers/product.service';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-editorspack',
+  selector: 'app-newproducts',
   imports: [CommonModule, RouterModule],
-  templateUrl: './editorspack.component.html',
-  styleUrls: ['./editorspack.component.scss'],
+  templateUrl: './newproducts.component.html',
+  styleUrls: ['./newproducts.component.scss']
 })
-export class EditorspackComponent {
+export class NewproductsComponent {
   products: any[] = [];
 
   increaseQty(product: any) {
@@ -27,8 +27,8 @@ export class EditorspackComponent {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    // عرض المنتجات من 1 إلى 7 باستخدام slice
-    this.products = this.productService.getAllProducts().slice(0, 7); // من المنتج الأول إلى السابع
+    // الحصول على جميع المنتجات ثم تصفية المنتجات بدءًا من المنتج رقم 7
+    this.products = this.productService.getAllProducts().slice(6); // من المنتج السابع وما بعده
   }
 
   getAvailabilityGradient(currentQty: number, totalQty: number): string {
