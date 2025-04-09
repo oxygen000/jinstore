@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-newproducts',
   imports: [CommonModule, RouterModule],
   templateUrl: './newproducts.component.html',
-  styleUrls: ['./newproducts.component.scss']
+  styleUrls: ['./newproducts.component.scss'],
 })
 export class NewproductsComponent {
   products: any[] = [];
@@ -27,8 +27,7 @@ export class NewproductsComponent {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    // الحصول على جميع المنتجات ثم تصفية المنتجات بدءًا من المنتج رقم 7
-    this.products = this.productService.getAllProducts().slice(6); // من المنتج السابع وما بعده
+    this.products = this.productService.getAllProducts().slice(6);
   }
 
   getAvailabilityGradient(currentQty: number, totalQty: number): string {

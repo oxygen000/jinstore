@@ -90,8 +90,6 @@ export class ProductService {
       image: './itmes/itam6.png',
       layout: 'double',
     },
-  ];
-  private products2: Product[] = [
     {
       id: 7,
       name: 'Product 7',
@@ -170,7 +168,7 @@ export class ProductService {
 
 
   getAllProducts(): Product[] {
-    return [...this.products,...this.products2 ];
+    return [...this.products ];
   }
 
   getFirstPartProducts(limit: number): Product[] {
@@ -180,10 +178,10 @@ export class ProductService {
 
 
   getProductById(id: number) {
-    return [...this.products,...this.products2 ].find((product) => product.id === id);
+    return [...this.products].find((product) => product.id === id);
   }
 
   getSuggestedProducts(currentProductId: number) {
-    return [...this.products,...this.products2].filter((product) => product.id !== currentProductId);
+    return [...this.products].filter((product) => product.id !== currentProductId);
   }
 }
