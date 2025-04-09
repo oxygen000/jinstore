@@ -6,6 +6,9 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import {  provideServerRouting } from '@angular/ssr';
+import { serverRoutes } from './app.routes.server';
+import { provideServerRendering } from '@angular/platform-server';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,5 +18,7 @@ export const appConfig: ApplicationConfig = {
      provideHttpClient(withFetch()),
      provideTranslateService(),
      provideAnimations(),
+     provideServerRendering(),
+     provideServerRouting(serverRoutes),
     ]
 };
