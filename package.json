@@ -1,6 +1,6 @@
 {
   "name": "jinstore",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,7 +22,6 @@
     "@angular/router": "^19.1.0",
     "@angular/ssr": "^19.1.7",
     "@ng-select/ng-select": "^14.2.6",
-    "@nguniversal/express-engine": "^16.2.0",
     "@ngx-translate/core": "^16.0.4",
     "@ngx-translate/http-loader": "^16.0.1",
     "@tailwindcss/postcss": "^4.1.2",
